@@ -1,0 +1,44 @@
+{
+  "name": "reactnative-cicd-fastlane",
+  "version": "1.0.0",
+  "description": "CI/CD practice for React Native by Fastlane",
+  "scripts": {
+    "bump-version": "node ./scripts/bumpVersion.js",
+    "android:dev": "ENVFILE=.env.development react-native run-android",
+    "android:staging": "ENVFILE=.env.staging react-native run-android",
+    "android:prod": "ENVFILE=.env.production react-native run-android",
+    "ios:dev": "ENVFILE=.env.development react-native run-ios",
+    "ios:staging": "ENVFILE=.env.staging react-native run-ios",
+    "ios:prod": "ENVFILE=.env.production react-native run-ios",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeguru827/reactnative-cicd-fastlane.git"
+  },
+  "author": "codeguru",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/codeguru827/reactnative-cicd-fastlane/issues"
+  },
+  "homepage": "https://github.com/codeguru827/reactnative-cicd-fastlane#readme",
+  "dependencies": {
+    "react-native-config": "^1.5.5"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "jest --findRelatedTests"
+    ]
+  }
+}

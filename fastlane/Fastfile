@@ -1,0 +1,13 @@
+platform :ios do
+  lane :beta do
+    build_app(workspace: "ios/YourApp.xcworkspace", scheme: "YourApp")
+    upload_to_testflight
+  end
+end
+
+platform :android do
+  lane :beta do
+    gradle(task: "clean bundleRelease", project_dir: "android/")
+    upload_to_play_store(track: 'beta')
+  end
+end
